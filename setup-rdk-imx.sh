@@ -46,7 +46,7 @@ fi
 
 cd $build_dir
 
-repo sync -j `nproc` -c --no-clone-bundle
+repo sync -j `nproc` -c --no-clone-bundle --no-tags
 if [ $? != 0 ]; then
     echo ""
     echo " *** repo sync failure *** "
