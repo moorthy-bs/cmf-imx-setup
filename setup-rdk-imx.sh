@@ -30,7 +30,7 @@ if [ ! -d "$build_dir" ]; then
     mkdir $build_dir
     cd $build_dir
 
-    repo init -u https://code.rdkcentral.com/r/manifests -b rdk-next -m rdkv-asp-nosrc.xml
+    repo init -u https://code.rdkcentral.com/r/manifests -b rdk-next -m rdkv-nosrc.xml
     if [ $? != 0 ]; then
         echo ""
         echo " *** repo init failure *** "
