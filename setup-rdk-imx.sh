@@ -35,14 +35,18 @@ if [ ! -d "$build_dir" ]; then
         echo ""
         echo " *** repo init failure *** "
         echo ""
+    else
+        echo "RDK CMF manifest initialized"
     fi
-
-    #to switch oe layers to thud add local manifests
-    local_manifests=".repo/local_manifests"
-    mkdir -p $build_dir/$local_manifests
-    echo "copying cmf-thud-freescale manifest to local manifests dir"
-    cp $BASEDIR/$manifest_dir/cmf-thud-freescale.xml $build_dir/$local_manifests
 fi
+
+cd $BASEDIR
+
+#to switch oe layers to thud add local manifests
+local_manifests=".repo/local_manifests"
+mkdir -p $build_dir/$local_manifests
+echo "copying cmf-thud-freescale manifest to local manifests dir"
+cp $BASEDIR/$manifest_dir/cmf-thud-freescale.xml $build_dir/$local_manifests
 
 cd $build_dir
 
@@ -51,6 +55,8 @@ if [ $? != 0 ]; then
     echo ""
     echo " *** repo sync failure *** "
     echo ""
+else
+    echo "repo sync done"
 fi
 
 #$BASEDIR/apply-patches.sh $build_dir/meta-cmf-freescale/patches $build_dir
