@@ -17,7 +17,7 @@ echo ""
 manifest_dir="thud-local-manifest"
 if [ ! -d $BASEDIR/$manifest_dir ]; then
     mkdir -p $BASEDIR/$manifest_dir
-    git clone https://github.com/moorthy-bs/rdkcmf-manifests $manifest_dir
+    git clone https://github.com/moorthy-bs/rdkcmf-manifests -b cmf-thud $manifest_dir
 else
     cd $manifest_dir
     git pull
@@ -30,7 +30,7 @@ if [ ! -d "$build_dir" ]; then
     mkdir $build_dir
     cd $build_dir
 
-    repo init -u https://code.rdkcentral.com/r/manifests -b rdk-next -m rdkv-nosrc.xml
+    repo init -u https://code.rdkcentral.com/r/manifests -b thud -m rdkv-nosrc.xml
     if [ $? != 0 ]; then
         echo ""
         echo " *** repo init failure *** "
