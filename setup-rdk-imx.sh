@@ -59,10 +59,21 @@ else
     echo "repo sync done"
 fi
 
-#$BASEDIR/apply-patches.sh $build_dir/meta-cmf-freescale/patches $build_dir
+################################
+####### apply patches ##########
+################################
+echo "applying patches..."
+
+cd meta-cmf-freescale
+git fetch "https://code.rdkcentral.com/r/components/generic/rdk-oe/meta-cmf-freescale" refs/changes/17/26517/20 && git cherry-pick FETCH_HEAD
+if [ $? -eq 0 ]; then
+    ./apply-patches.sh $PWD/patches $build_dir
+fi
+cd -
+
+####################################
+echo "RDK-CMF Yocto source is ready for the build"
 
 # unset variables
 unset build_dir
 unset BASEDIR
-
-echo "RDK-CMF Yocto source is ready for the build"
