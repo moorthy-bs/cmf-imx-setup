@@ -47,7 +47,7 @@ local_manifests=".repo/local_manifests"
 mkdir -p $build_dir/$local_manifests
 echo "copying cmf-thud-freescale manifest to local manifests dir"
 cp $BASEDIR/$manifest_dir/cmf-thud-freescale.xml $build_dir/$local_manifests
-
+cp $BASEDIR/$manifest_dir/imx8-rdk-revisions.conf $build_dir/revisions.conf
 cd $build_dir
 
 repo sync -j `nproc` -c --no-clone-bundle
@@ -65,7 +65,7 @@ fi
 echo "applying patches..."
 
 cd meta-cmf-freescale
-git fetch "https://code.rdkcentral.com/r/components/generic/rdk-oe/meta-cmf-freescale" refs/changes/17/26517/20 && git cherry-pick FETCH_HEAD
+git fetch "https://code.rdkcentral.com/r/components/generic/rdk-oe/meta-cmf-freescale" refs/changes/17/26517/21 && git cherry-pick FETCH_HEAD
 if [ $? -eq 0 ]; then
     ./apply-patches.sh $PWD/patches $build_dir
 fi
