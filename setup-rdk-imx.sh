@@ -65,13 +65,14 @@ fi
 echo "applying patches..."
 
 cd meta-cmf-freescale
-git fetch "https://code.rdkcentral.com/r/components/generic/rdk-oe/meta-cmf-freescale" refs/changes/17/26517/22 && git cherry-pick FETCH_HEAD
+git fetch "https://code.rdkcentral.com/r/components/generic/rdk-oe/meta-cmf-freescale" refs/changes/17/26517/23 && git cherry-pick FETCH_HEAD
 if [ $? -eq 0 ]; then
     ./apply-patches.sh $PWD/patches $build_dir
 fi
-cd -
+cd ..
 
 ####################################
+cd $build_dir
 echo "RDK-CMF Yocto source is ready for the build"
 
 # unset variables
