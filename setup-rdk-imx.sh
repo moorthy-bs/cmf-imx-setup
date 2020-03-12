@@ -50,7 +50,7 @@ cp $BASEDIR/$manifest_dir/cmf-thud-freescale.xml $build_dir/$local_manifests
 cp $BASEDIR/$manifest_dir/imx8-rdk-revisions.conf $build_dir/revisions.conf
 cd $build_dir
 
-repo sync -j `nproc` -c --no-clone-bundle
+repo sync -j `nproc` -c --no-clone-bundle --no-tags
 if [ $? != 0 ]; then
     echo ""
     echo " *** repo sync failure *** "
