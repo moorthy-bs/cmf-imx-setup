@@ -12,3 +12,11 @@ if [ ! -f ${REPO_DIR}/${REPO_BIN} ]; then
 fi
 
 export PATH=$PATH:${REPO_DIR}
+
+sudo apt-get update
+
+sudo apt-get install build-essential
+# install git > 1.8.3
+# install tar > 1.27
+# install python3 > 3.4
+sudo apt-get install git tar python3
