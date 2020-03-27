@@ -35,3 +35,10 @@ for name in `find $PATCHES -name \*.patch | sort`; do
         echo ""
         git -C "$ROOT"/"$DIR" am $name
 done
+
+for dir in `find $ROOT -name meta-* -type d -maxdepth 1`;
+do
+  find $dir -type f -exec sed -i 's/base_contains/bb.utils.contains/g' {} +
+  find $dir -type f -exec sed -i 's/base_conditional/oe.utils.conditional/g' {} +
+  find $dir -type f -exec sed -i 's/oe_filter_out/oe.utils.str_filter_out/g' {} +
+done
