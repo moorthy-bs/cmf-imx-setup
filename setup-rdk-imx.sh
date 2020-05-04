@@ -65,7 +65,7 @@ fi
 echo "applying patches..."
 
 cd meta-cmf-freescale
-git fetch "https://code.rdkcentral.com/r/components/generic/rdk-oe/meta-cmf-freescale" refs/changes/17/26517/23 && git cherry-pick FETCH_HEAD
+git fetch "https://code.rdkcentral.com/r/components/generic/rdk-oe/meta-cmf-freescale" refs/changes/17/26517/28 && git cherry-pick FETCH_HEAD
 if [ $? -eq 0 ]; then
     ./apply-patches.sh $PWD/patches $build_dir
 fi
