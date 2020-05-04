@@ -71,6 +71,16 @@ if [ $? -eq 0 ]; then
 fi
 cd ..
 
+# apply std_mismatch_error patch to qtbase-native based on host gcc version
+# gcc greater than or equal to 6.x expects this patch for error free build
+tempfile=gccversion.txt
+gcc -v 2> $tempfile
+gcc_version=`cat $tempfile | grep 'gcc version' | awk '{ print $3 }'`
+rm $tempfile
+qtbase=meta-qt5/recipes-qt/qt5/qtbase-native_5.1.1.bb
+if [ ${gcc_version%%.*} -ge 6 -a $(grep -c 'std_member_mismatch_error' $qtbase) -eq 0 ]; then
+    printf '\nSRC_URI_append_thud = " file://std_member_mismatch_error_gcc8.patch"' >> $qtbase
+fi
 ####################################
 cd $build_dir
 echo "RDK-CMF Yocto source is ready for the build"
